@@ -1,0 +1,17 @@
+<h1>New Book</h1>
+<% if book.errors.any? %>
+<%= book.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model:book do |f| %>
+  <label for = "title">Title</label>
+  <%= f.text_area :title,autofocus: true, id:"title" %>
+  <label for = "body">Opinion</label>
+  <%= f.text_field :body, id:"body" %>
+  <%= f.submit "Submit" %>
+<% end %>
