@@ -1,4 +1,4 @@
-<h1>New Book</h1>
+<h2>New book</h2>
 <% if book.errors.any? %>
 <%= book.errors.count %>errors prohibited this obj from being saved:
   <ul>
@@ -9,9 +9,10 @@
 <% end %>
 
 <%= form_with model:book do |f| %>
-  <label for = "title">Title</label>
-  <%= f.text_area :title,autofocus: true, id:"title" %>
-  <label for = "body">Opinion</label>
-  <%= f.text_field :body, id:"body" %>
-  <%= f.submit "Submit" %>
+  <label for = "title"  class="form-label">Title</label>
+  <%= f.text_field :title,autofocus: true, id:"title" ,class: "form-control" %>
+
+  <label for = "body" class="form-label">Opinion</label>
+  <%= f.text_area :body, id:"body" ,class: "form-control" %>
+  <%= f.submit "Create Book" ,class:"btn btn-success mt-3" %>
 <% end %>

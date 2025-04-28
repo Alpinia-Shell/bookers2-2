@@ -1,11 +1,34 @@
-<h1>Editing Book</h1>
-<%= form_with model:@book do |f| %>
-  <label for= "title">Title</label>
-  <%= f.text_field :title ,autofocus: true , id:'title' %>
-  <label for= "body">Opinion<label>
-  <%= f.text_area :body ,id:'body'%>
-  <%= f.submit 'Submit' %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-5 mx-auto">
+      <h2>Editing Book</h2>
 
-<%= link_to 'Show',book_path(@book) %> | <%= link_to 'Back',books_path %>
+      <% if @book.errors.any? %>
+        <h2><%= @book.errors.count %>error prohibited this obj from being saved:</h2>
+        <ul>
+          <%  @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <%= form_with model:@book do |f| %>
+
+        <div class="form-group">
+          <label for= "book_title">Title</label>
+          <%= f.text_field :title ,autofocus: true , id:'book_title',class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <label for= "book_body">Opinion</label>
+          <%= f.text_area :body ,id:'book_body',class:"form-control" %>
+        </div>
+
+        <%= f.submit 'Update Book',class:"btn btn-success mb-3" %>
+      <% end %>
+
+      <%= link_to 'Show',book_path(@book) %> | <%= link_to 'Back',books_path %>
+    </div>
+  </div> 
+</div>
 
